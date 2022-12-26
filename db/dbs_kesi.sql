@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Des 2022 pada 15.18
+-- Waktu pembuatan: 26 Des 2022 pada 16.27
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -43,7 +43,7 @@ CREATE TABLE `tbl_admin` (
   `id_admin` int(11) NOT NULL,
   `nama_admin` varchar(30) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -51,7 +51,9 @@ CREATE TABLE `tbl_admin` (
 --
 
 INSERT INTO `tbl_admin` (`id_admin`, `nama_admin`, `username`, `password`) VALUES
-(1, 'Jhon Pamungkas', 'jhon', 'jhon');
+(1, 'Jhon Pamungkas', 'jhon', 'jhon'),
+(4, 'Briant Audiera', 'briant', '$2y$10$pXbAtPYH.O.tpdslJNJI6uTm2bvDsgVdFPOacSrrw.ekA.UF6awMG'),
+(5, 'Adam', 'adam', '$2y$10$.h7duqfUROwgaBnWCZL0yOFv.A1OTYOFDp1U2q6jIGprLklRBSqnu');
 
 --
 -- Indexes for dumped tables
@@ -77,13 +79,13 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT untuk tabel `login_logs`
 --
 ALTER TABLE `login_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
