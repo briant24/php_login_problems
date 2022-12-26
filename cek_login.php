@@ -7,17 +7,21 @@ $password = $_POST['password'];
 
 $time=time()-30;
 $ip_address=getIpAddr();
-$query=mysqli_query($koneksi,"SELECT COUNT(*) as total_count from login_logs where try_times > $time and ip_address='$ip_address'");
-$check_login_row=mysqli_fetch_assoc($query);
+$query=mysqli_prepare($koneksi,"SELECT COUNT(*) as total_count from login_logs where try_times > ? and ip_address=?");
+mysqli_stmt_bind_param($query,"ss",$time,$ip_address);
+mysqli_stmt_execute($query);
+$result=mysqli_stmt_get_result($query);
+$check_login_row=mysqli_fetch_assoc($result);
 $total_count=$check_login_row['total_count'];
 if($total_count==3){
     echo "<script>alert('Terlalu banyak percobaan, coba lagi dalam 30 detik!'); window.location = 'index.php'</script>";
 }else{
-    $query = mysqli_query($koneksi, "SELECT * FROM tbl_admin WHERE username='$username' AND password='$password'");
-
-    $cek = mysqli_num_rows($query);
-    
-    $r = mysqli_fetch_array($query);
+    $query = mysqli_prepare($koneksi, "SELECT * FROM tbl_admin WHERE username=? AND password=?");
+    mysqli_stmt_bind_param($query,"ss",$username,$password);
+    mysqli_stmt_execute($query);
+    $result=mysqli_stmt_get_result($query);
+    $cek = mysqli_num_rows($result);    
+    $r = mysqli_fetch_array($result);
 
     if ($cek > 0) {
 
