@@ -38,6 +38,7 @@ if ((empty($_SESSION['username'])) and (empty($_SESSION['password']))) {
                                 <?php echo ((isset($_COOKIE["username"])) and (isset($_COOKIE["password"]))) ? "checked":"" ?> >
                                 <label class="form-check-label" for="exampleCheck1">Remember Me</label>
                             </div>
+                            <a href="daftar.php">Register</a>
                             <button type="submit" class="btn btn-primary float-right">Login</button>
                         </form>
                     </div>
